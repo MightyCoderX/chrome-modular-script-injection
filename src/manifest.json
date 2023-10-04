@@ -2,10 +2,10 @@
     "manifest_version": 3,
 
     "author": "MightyCoderX",
-    "name": "Chromium Extension Template Manifest",
-    "short_name": "Template",
+    "name": "Chromium Modular Script Injection",
+    "short_name": "CMSI",
     "version": "0.0.1",
-    "description": "A template for chromium extensions development",
+    "description": "Module system for injected page scripts",
     "icons":
     {
         "16": "icons/16x16.png",
@@ -20,30 +20,19 @@
         "type": "module"
     }, 
 
-    "action":
-    {
-        "default_icon":
-        {
-            "16": "icons/16x16.png",
-            "24": "icons/24x24.png",
-            "32": "icons/32x32.png"
-        },
-        "default_title": "Chrome Extension Template Popup",
-        "default_popup": "popup/popup.html"
-    },
-
     "content_scripts":
     [
         {
             "matches": ["<all_urls>"],
-            "js": ["content.js"]
+            "run_at": "document_start",
+            "js": ["document_start.js"]
         }
     ],
 
     "web_accessible_resources":
     [
         {
-            "resources": ["assets/*"],
+            "resources": ["modules/*"],
             "matches": ["<all_urls>"]
         }
     ],
